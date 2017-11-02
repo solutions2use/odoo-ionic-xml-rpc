@@ -31,8 +31,8 @@ odoo_api.search('res.partner', [['name', '!=', 'bas']]).then(
 and call this service methods from within your page controller like:
 
 ```
-// asume you called your service 'S2uApi'
-S2uApi.login($scope.data).then(function(uid) {
+// asume you called your service 'OdooApi'
+OdooApi.login($scope.data).then(function(uid) {
      // do something
 }
 ```
