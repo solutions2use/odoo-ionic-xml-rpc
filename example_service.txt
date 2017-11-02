@@ -1,0 +1,52 @@
+.service('OdooApi', ['$q', '$http', function ($q, $http) {
+    
+    var odoo_api = new OdooApi(<your odoo url>, <your database name>);
+
+    var ret = {
+        login: function (data) {
+            var deferred = $q.defer();
+            
+            odoo_api.login(data.fld_login, data.fld_password).then(
+                function(uid) {
+                    deferred.resolve(uid);
+                }, 
+                function() {
+                    deferred.resolve(false);
+                }
+            );
+            
+            return deferred.promise
+        },
+        search: function (model, domain) {
+            var deferred = $q.defer();
+            
+            odoo_api.search(model, domain).then(
+                function(ids) {
+                    deferred.resolve(ids);
+                }, 
+                function() {
+                    deferred.resolve(false);
+                }
+            );
+            
+            return deferred.promise
+        },
+        read: function (model, ids, fields) {
+            var deferred = $q.defer();
+            
+            odoo_api.call(model, 'read', ids, fields).then(
+                function(res) {
+                    deferred.resolve(res);
+                }, 
+                function() {
+                    deferred.resolve(false);
+                }
+            );
+            
+            return deferred.promise
+        }
+        
+    }
+    
+    return ret;
+}]);
