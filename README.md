@@ -3,7 +3,7 @@
 
 You have to add these .js files to your "Other JS" folder in your Ionic Creator project. Create a service for your project where you do all the bussiness logic. To initialize the odoo api object use:
 
-var odoo_api = new OdooApi('<url from your odoo instance>', '<database you want to use>');
+var odoo_api = new OdooApi('url from your odoo instance', 'database you want to use');
 
 after that you can do things like:
 
